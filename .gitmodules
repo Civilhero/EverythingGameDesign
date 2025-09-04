@@ -1,3 +1,6 @@
 [submodule "Assets/ArtisanDream.Tools"]
 	path = Assets/ArtisanDream.Tools
 	url = https://github.com/anthonyromrell/ArtisanDream.Tools
+[submodule "The Unity Projects/workingUnity/Assets/ArtisanDream.Tools"]
+	path = The Unity Projects/workingUnity/Assets/ArtisanDream.Tools
+	url = https://github.com/anthonyromrell/ArtisanDream.Tools
