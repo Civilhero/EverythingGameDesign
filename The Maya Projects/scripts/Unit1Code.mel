@@ -1,0 +1,14 @@
+// bottom
+polySphere -r 3 -sx 20 -sy 20 -cuv 2 -ch 1;
+move -relative -objectSpace -worldSpaceDistance 0 3 0;
+// torso
+polySphere -r 2 -sx 20 -sy 20 -cuv 2 -ch 1;
+move -relative -objectSpace -worldSpaceDistance 0 7.99 0;
+// top
+polySphere -r 1 -sx 20 -sy 20 -cuv 2 -ch 1;
+move -relative -objectSpace -worldSpaceDistance 0 10.97 0;
+// corny nose
+polyCone -r .75 -sx 20 -sy 20 -ch 1;
+rotate -r -os -fo 0 0 90;
+scale -ws -r 0.32 0.32 0.32;
+move -relative -objectSpace -worldSpaceDistance 11 1.3 0;
