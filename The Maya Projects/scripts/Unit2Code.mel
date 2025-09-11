@@ -1,0 +1,12 @@
+//Randomizes the radius of the spheres 
+//Floor makes the numbers whole, rando randomizes the number.
+float $BallRad = floor(rand(1.0, 9.0));
+//bottom Sphere
+polySphere -r $BallRad -sx 20 -sy 20 -cuv 2 -ch 1;
+move -r -os -wd 0 $BallRad 0;
+//Middle Sphere
+polySphere -r ($BallRad - 1) -sx 20 -sy 20 -cuv 2 -ch 1;
+move -r -os -wd 0 (($BallRad * 2) + ($BallRad - 1)) 0;
+//Top Shpere
+polySphere -r ($BallRad - 2) -sx 20 -sy 20 -cuv 2 -ch 1;
+move -r -os -wd 0 (($BallRad * 2) + (($BallRad - 1) * 2) + ($BallRad - 2)) 0;
