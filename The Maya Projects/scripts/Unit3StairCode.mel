@@ -1,0 +1,11 @@
+global proc BuldStair(int $stair, int $long, int $height, int $stepH, int $rotate, int $width)
+{
+    for ($p = 0; $p < $stair; $p++) {
+        polyCube -w $width -h $height -d $long;
+        rotate -os 0 ($p * ($rotate / (float)$stair)) 0;
+        move -os 0 ($p * $stepH) ($long / 2);
+    }
+    polyCylinder -r ($width / 2) -h ($stepH * $stair) -sx 20;
+    move -os 0 (($stepH * $stair) / 2) 0;
+}
+BuldStair 20 8 3 3 500 3;
