@@ -1,0 +1,90 @@
+global proc float multiOpCalculator(float $inputArray[], string $operation) {
+    if (size($inputArray) == 0) {
+        return 0.0;
+    }
+    
+    float $result;
+
+    if ($operation == "+") {
+        $result = 0.0;
+        for ($value in $inputArray) {
+            $result += $value;
+        }
+    } 
+    else if ($operation == "-") {
+        $result = $inputArray[0];
+        for ($i = 1; $i < size($inputArray); $i++) {
+            $result -= $inputArray[$i];
+        }
+    }
+    else if ($operation == "*") {
+        $result = 1.0;
+        for ($value in $inputArray) {
+            $result *= $value;
+        }
+    } 
+    else if ($operation == "/") {
+        $result = $inputArray[0];
+        for ($i = 1; $i < size($inputArray); $i++) {
+            if ($inputArray[$i] == 0.0) {
+                print("Error: Division by zero\n");
+                return 0.0;
+            }
+            $result /= $inputArray[$i];
+        }
+    }
+    else if ($operation == "avg") {
+        float $sum = 0.0;
+        for ($value in $inputArray) {
+            $sum += $value;
+        }
+        $result = $sum / size($inputArray);
+    }
+    else if ($operation == "pow") {
+        $result = 0.0;
+        float $base = $inputArray[0];
+        for ($i = 1; $i < size($inputArray); $i++) {
+            $result += pow($base, $inputArray[$i]);
+        }
+    }
+    else if ($operation == "median") {
+        float $sortedArray[] = `sort $inputArray`;
+        int $size = size($sortedArray);
+        if ($size == 1) {
+            $result = $sortedArray[0];
+        } else if ($size % 2 == 0) {
+            $result = ($sortedArray[$size/2 - 1] + $sortedArray[$size/2]) / 2.0;
+        } else {
+            $result = $sortedArray[$size/2];
+        }
+    }
+    else {
+        print("Error: Unknown operation '" + $operation + "'\n");
+        return 0.0;
+    }
+    
+    return $result;
+}
+
+float $NumbArray[] = {40.0, 5.0, 4.0, 1.0};
+
+float $sumResult = `multiOpCalculator $NumbArray "+"`;
+print("The sum is: " + $sumResult + "\n");
+
+float $SubTractResult = `multiOpCalculator $NumbArray "-"`;
+print("The difference is: " + $SubTractResult + "\n");
+
+float $productResult = `multiOpCalculator $NumbArray "*"`;
+print("The product is: " + $productResult + "\n");
+
+float $DivisionResult = `multiOpCalculator $NumbArray "/"`;
+print("The division is: " + $DivisionResult + "\n");
+
+float $averageResult = `multiOpCalculator $NumbArray "avg"`;
+print("The average is: " + $averageResult + "\n");
+
+float $powerResult = `multiOpCalculator $NumbArray "pow"`;
+print("The power sum is: " + $powerResult + "\n");
+
+float $medianResult = `multiOpCalculator $NumbArray"median"`;
+print("The median is: " + $medianResult + "\n");
