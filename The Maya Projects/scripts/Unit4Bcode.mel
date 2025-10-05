@@ -1,0 +1,126 @@
+global proc float plus(float $insert[]) {
+    float $result = 0;
+    for ($i=0; $i<size($insert); $i++) {
+        $result += $insert[$i];
+    }
+    return $result;
+}
+
+global proc float subtract(float $insert[]) {
+    float $result = 0;
+        $result = $insert[0];
+        for ($i = 1; $i < size($insert); $i++) {
+            $result -= $insert[$i];
+        }
+    return $result;
+}
+
+global proc float multiply(float $insert[]) {
+    float $result = 1.0;
+    for ($i=0; $i<size($insert); $i++) {
+        $result *= $insert[$i];
+    }
+    return $result;
+}
+
+global proc float divide(float $insert[]) {
+    float $result = 0;
+    for ($i = 1; $i < size($insert); $i++) {
+        if ($insert[$i] == 0.0) {
+            error("Division by zero detected");
+            return 0.0;
+        }
+        $result /= $insert[$i];
+    }
+    return $result;
+}
+
+global proc float average(float $insert[]) {
+    float $sum = 0;
+for ($i=0; $i<size($insert); $i++) {
+        $sum += $insert[$i];
+    }
+    float $result = $sum / size($insert);
+    return $result;
+}
+
+global proc float power(float $inputArray[]) {
+    float $result = 0;
+    float $base = $inputArray[0];
+    int $i;
+    for ($i = 1; $i < size($inputArray); $i++) {
+        $result += pow($base, $inputArray[$i]);
+    }
+    return $result;
+}
+
+global proc float median(float $insert[]) {
+    float $sortedArray[] = `sort $insert`;
+    int $size = size($sortedArray);
+    float $result;  
+    if ($size == 1) {
+        $result = $sortedArray[0];
+    } else if ($size % 2 == 0) {
+        $result = ($sortedArray[$size/2 - 1] + $sortedArray[$size/2]) / 2.0;
+    } else {
+        $result = $sortedArray[($size/2)];
+    }
+    return $result;
+}
+
+global proc multiOpCalculator(string $operator, float $inputArray[]) {
+    if ($operator == "+") {
+        print("The sum of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + plus($inputArray));
+
+    } else if ($operator == "-") {
+        print("The subtraction of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + subtract($inputArray));
+    } else if ($operator == "*") {
+        print("The multiplication of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + multiply($inputArray));
+    } else if ($operator == "/") {
+        print("The division of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + divide($inputArray));
+    } else if ($operator == "A") {
+        print("The average of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + average($inputArray));
+    } else if ($operator == "P") {
+        print("The power of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + power($inputArray));
+    } else if ($operator == "M") {
+        print("The median of ");
+        for ($i = 0; $i < size($inputArray); $i++) {
+            print($inputArray[$i] + " ");
+        }
+        print("is: " + median($inputArray));
+    } else {
+        print("Error: Unauthorized operation '" + $operator);
+    }
+}
+//Examples that I used
+multiOpCalculator ("+", {5, 6, 10});
+multiOpCalculator ("-", {20, 4, 10, 1});
+multiOpCalculator ("*", {6, 7});
+multiOpCalculator ("/", {50, 10, 5});
+multiOpCalculator ("A", {2, 3, 5});
+multiOpCalculator ("P", {10, 3, 25});
+multiOpCalculator ("M", {10, 2, 7, 9, 5, 1, 4});
