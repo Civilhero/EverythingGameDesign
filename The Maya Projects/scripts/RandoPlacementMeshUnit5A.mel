@@ -1,0 +1,36 @@
+if (`window -exists CWindow`) {
+    deleteUI CWindow;
+}
+
+window -title "Rando Object Generator" -widthHeight 300 50 CWindow;
+columnLayout -adjustableColumn true;
+text -label "Welcome now Select an object";
+text -label "How Many Meshes do you want Generated?";
+string $amountField = `intField -width 150`;
+button -label "Generate Your Meshes" -command ("RandomlyGenerate " + $amountField);
+showWindow CWindow;
+
+global proc RandomlyGenerate(string $amountField) {
+    int $valuable = `intField -query -value $amountField`;
+    if ($valuable <= 0) {
+        error "oh thats right! You must put in a number thats higher than 0! Try Again!";
+    }
+    
+    string $chosenboyorBois[] = `ls -sl`;
+    if (size($chosenboyorBois) == 0) {
+        error "What did I just say!?!?!? Now Select a shape or something";
+    }
+    string $mesh = $chosenboyorBois[0];
+    
+    for ($i = 0; $i < $valuable; $i++) {
+        string $Multipyply[] = `duplicate $mesh`;
+        float $Xplacement = rand(-5.0, 5.0);  
+        float $Yplacement = rand(-5.0, 5.0);  
+        float $Zplacement = rand(-5.0, 5.0);  
+        float $x = $Xplacement * ($i + 1);
+        float $y = $Yplacement * ($i + 1);
+        float $z = $Zplacement * ($i + 1);
+        move -absolute $x $y $z $Multipyply[0];
+    }
+    print("Multi meshing go!");
+}
