@@ -1,0 +1,60 @@
+if (`window -exists CWindow`) {
+    deleteUI CWindow;
+}
+window -title "Domain Expansion: Malevolent Calculation" -widthHeight 250 300 CWindow;
+columnLayout -adjustableColumn true;
+textField -editable false -width 250 -height 40 -text "Select A Number" displayField;
+gridLayout -numberOfRows 5 -cellWidth 50 -cellHeight 50;
+
+button -label "7" -command "appendExpression(\"7\")";
+button -label "8" -command "appendExpression(\"8\")";
+button -label "9" -command "appendExpression(\"9\")";
+button -label "4" -command "appendExpression(\"4\")";
+button -label "5" -command "appendExpression(\"5\")";
+button -label "6" -command "appendExpression(\"6\")";
+button -label "1" -command "appendExpression(\"1\")";
+button -label "2" -command "appendExpression(\"2\")";
+button -label "3" -command "appendExpression(\"3\")";
+button -label "0" -command "appendExpression(\"0\")";
+button -label "." -command "appendExpression(\".\")";
+button -label "+" -command "appendExpression(\"+\")";
+button -label "-" -command "appendExpression(\"-\")";
+button -label "*" -command "appendExpression(\"*\")";
+button -label "/" -command "appendExpression(\"/\")";
+button -label "=" -command "calculateResult()";
+button -label "C" -command "clearDisplay()";
+showWindow CWindow;
+
+string $currentExpression = "";
+
+global proc appendExpression(string $value) {
+    global string $currentExpression;
+    $currentExpression = $currentExpression + $value;
+    textField -edit -text $currentExpression displayField;
+}
+
+
+global proc clearDisplay() {
+    global string $currentExpression;
+    $currentExpression = "";
+    textField -edit -text " " displayField;
+}
+
+global proc calculateResult() {
+    global string $currentExpression;
+    if ($currentExpression == "") {
+        textField -edit -text "0" displayField;
+        return;
+    }
+    
+    string $command = ("float $tempResult = " + $currentExpression + ";");
+    float $result;
+    if (catch(`eval($command)`)) {
+        textField -edit -text "Nope! Don't you dare!!" displayField;
+        $currentExpression = "";
+    } else {
+        $result = `eval($command)`;
+        $currentExpression = string($result);
+        textField -edit -text $currentExpression displayField;
+    }
+}
