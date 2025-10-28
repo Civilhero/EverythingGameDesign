@@ -40,7 +40,6 @@ public class SimpleCharacterController : MonoBehaviour
     {
         MoveCharacter();
         ApplyGravity();
-        KeepCharacterOnXAxis();
     }
 
     /// <summary>
@@ -78,16 +77,5 @@ public class SimpleCharacterController : MonoBehaviour
 
         // Apply velocity
         controller.Move(velocity * Time.deltaTime);
-    }
-
-    /// <summary>
-    /// Ensures the character remains on the x-axis.
-    /// </summary>
-    private void KeepCharacterOnXAxis()
-    {
-        // Lock the z-axis position to maintain 2D movement
-        var currentPosition = thisTransform.position;
-        currentPosition.z = 0f;
-        thisTransform.position = currentPosition;
     }
 }
