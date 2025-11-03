@@ -7,8 +7,8 @@ public class FloatData : NameId
 {
     [SerializeField] private float value,  minValue, maxValue;
 
-    [FormerlySerializedAs("minValueEvent")] public UnityEvent<float> valueOutOfRange;
-    [FormerlySerializedAs("updateValueEvent")] public UnityEvent onValueChanged;
+    public UnityEvent<float> valueOutOfRange;
+    public UnityEvent onValueChanged, onValueZero;
 
     public float Value
     {
@@ -36,10 +36,15 @@ public class FloatData : NameId
         Value = data.Value;
     }
 
-    private void CheckValueRange()
+    public void CheckValueRange()
     {
         if (!(Value < minValue) && !(Value > maxValue)) return;
         valueOutOfRange.Invoke(Value);
         Value = Mathf.Clamp(Value, minValue, maxValue);
+        
+                if (value == 1)
+                {
+                    onValueZero.Invoke();   
+                }
     }
 }
