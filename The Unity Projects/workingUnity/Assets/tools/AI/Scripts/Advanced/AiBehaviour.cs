@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Collider))]
 public class AiBehaviour : MonoBehaviour
 {
-    public AiBrain aiBrainObj;
+    public AiStats aiStatsObj;
+    private AiBase aiBaseObj;
     private NavMeshAgent agent;
-    private WaitForFixedUpdate waitObj = new WaitForFixedUpdate();
-    public bool CanRun { get; set; } = true;
     public UnityEvent startEvent, triggerEnterEvent, triggerExitEvent;
     
     private void Awake()
@@ -23,22 +19,21 @@ public class AiBehaviour : MonoBehaviour
     private void Start()
     {
         startEvent.Invoke();
+        
+        if (aiStatsObj == null) return;
+        agent.speed = aiStatsObj.speed;
+        agent.acceleration = aiStatsObj.acceleration;
+        agent.angularSpeed = aiStatsObj.angularSpeed;
+        agent.stoppingDistance = aiStatsObj.stoppingDistance;
     }
 
-    public void Stop(bool stopped)
+    public void ChangeBase(AiBase obj)
     {
-        agent.isStopped = stopped;
+        aiBaseObj = obj;
     }
-    
-
-    public void SwapAIFunction(AiBase aiBaseObj)
+    private void Update()
     {
-        aiBrainObj.aiBaseObj = aiBaseObj;
-    }
-
-    private void FixedUpdate()
-    {
-        aiBrainObj.Navigate(agent);
+        aiBaseObj.Navigate(agent);
     }
 
     private void OnTriggerEnter(Collider other)
