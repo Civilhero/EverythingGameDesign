@@ -935,6 +935,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4509525441244679262, guid: ef146bd21f3cfb34aa13cea522001202, type: 3}
+      propertyPath: startEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2487,7 +2491,8 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5628938980851315349, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3523012859593636229, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
@@ -2503,6 +2508,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+      propertyPath: respondEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+      propertyPath: respondEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7629274691123562346, guid: 5ee2bf004405ea3449eec2405388e5f6, type: 3}
+    - target: {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+      propertyPath: respondEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+      propertyPath: respondEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonBehave, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+      propertyPath: respondEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1339324879327645921, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
       propertyPath: m_Name
       value: mini simple skeleton demo (1)

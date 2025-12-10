@@ -305,7 +305,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 454965532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7629274691123562346, guid: 5ee2bf004405ea3449eec2405388e5f6, type: 3}
+        m_TargetAssemblyTypeName: ButtonBehave, Assembly-CSharp
+        m_MethodName: ButtonQuits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &454965532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +420,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4703896204300983199, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 5617950112292938393, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 6988026087356088355, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 1498389860755990704, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -666,7 +683,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dianna
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4300815783728407359, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 773843226666501766, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 5628938980851315349, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 2853865460096586165, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 6950448206514501233, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 9132183159651577255, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -735,7 +761,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1498389860755990704, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 4703896204300983199, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 5617950112292938393, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 346107027528506176, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
+    - {fileID: 6988026087356088355, guid: 442046cb242690c4d9ddf9bcb75eb5c8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -940,7 +971,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: mini simple skeleton demo (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1743935377284595790, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 238779744511178616, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 2564346656959146813, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 6619041098743938751, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 5866553276288652116, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -957,6 +993,7 @@ GameObject:
   - component: {fileID: 1067881523}
   - component: {fileID: 1067881522}
   - component: {fileID: 1067881521}
+  - component: {fileID: 1067881524}
   m_Layer: 5
   m_Name: erw
   m_TagString: Untagged
@@ -1027,7 +1064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1067881522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7629274691123562346, guid: 5ee2bf004405ea3449eec2405388e5f6, type: 3}
+        m_TargetAssemblyTypeName: ButtonBehave, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Main Game
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1067881522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1115,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067881519}
   m_CullTransparentMesh: 1
+--- !u!114 &1067881524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067881519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee09dc5b573d9f445927d95403c5ffef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonBehave
 --- !u!1001 &1067991013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,7 +1191,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: mini simple skeleton demo (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2564346656959146813, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 1743935377284595790, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 238779744511178616, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 5866553276288652116, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
+    - {fileID: 6619041098743938751, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
