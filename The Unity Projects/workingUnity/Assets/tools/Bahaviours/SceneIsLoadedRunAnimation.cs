@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 public class SceneIsLoadedRunAnimation : MonoBehaviour
 {
     public float loadTime = 2;
-    private static readonly int IsLoaded = Animator.StringToHash("IsLoaded");
+    public static readonly int IsLoaded = Animator.StringToHash("IsLoaded");
 
-    private void Awake()
+    public void Awake()
     {
         SceneManager.sceneLoaded += Loaded;
     }
 
-    private void Loaded(Scene arg0, LoadSceneMode arg1)
+    public void Loaded(Scene arg0, LoadSceneMode arg1)
     {
         StartCoroutine(WaitOnLoad());
     }
 
-    private IEnumerator WaitOnLoad()
+    public IEnumerator WaitOnLoad()
     {
         yield return new WaitForSeconds(loadTime);
         var anim = GetComponent<Animator>();

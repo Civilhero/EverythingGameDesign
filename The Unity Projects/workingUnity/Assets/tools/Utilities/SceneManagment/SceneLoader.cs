@@ -33,7 +33,7 @@ public class SceneLoader : MonoBehaviour
         LoadScene(sceneObj);
     }
     
-    private void LoadSceneInternal(string sceneName)
+    public void LoadSceneInternal(string sceneName)
     {
         switch (loadType)
         {
