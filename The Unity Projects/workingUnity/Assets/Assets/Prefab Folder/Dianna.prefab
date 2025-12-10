@@ -99,5 +99,164 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9132183159651577255}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6950448206514501233}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2853865460096586165}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5628938980851315349}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 773843226666501766}
   m_SourcePrefab: {fileID: 100100000, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+--- !u!1 &4300815783728407359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 46aff7c392ebc9e4a84c390310a79fb3, type: 3}
+  m_PrefabInstance: {fileID: 3994403675598184046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &9132183159651577255
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300815783728407359}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &6950448206514501233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300815783728407359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8cbbe35153640cea23bf58a428eab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpForce: 10
+  gravity: -9.81
+--- !u!114 &2853865460096586165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300815783728407359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9380c5088918442908482eb5acf13274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdTime: 0.1
+  onCallEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  awakeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ae881ac3fbe84b543b06c4a153edd2e1, type: 2}
+        m_TargetAssemblyTypeName: GameActionAdvanced, Assembly-CSharp
+        m_MethodName: RaiseAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6237525409453496419, guid: 7987ba88f9371f04990f2e6dbd8d2c7b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  runEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  disableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  applicationQuitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5628938980851315349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300815783728407359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db292f06e9d8b44a896010ae967eb294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableOrDestroyBehaviour
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  beginDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  endDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canSelfDestructOnStart: 0
+  canTrigger: 0
+  canDestroy: 0
+  state: 0
+  seconds: 0.1
+--- !u!114 &773843226666501766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300815783728407359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac948c1e1fee7e4a99fd6b982693124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AwakeBehaviour
+  awakeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e37608774ca9cce42a5bae5ae31bcdad, type: 2}
+        m_TargetAssemblyTypeName: AiHunt, Assembly-CSharp
+        m_MethodName: AddTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6237525409453496419, guid: 7987ba88f9371f04990f2e6dbd8d2c7b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

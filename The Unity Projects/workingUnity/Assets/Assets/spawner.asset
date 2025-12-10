@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e842cc2663f46d98d43922a660ba8e, type: 3}
   m_Name: spawner
   m_EditorClassIdentifier: Assembly-CSharp::Instancer
-  prefab: {fileID: 4993962087906592709, guid: a4e0ebc7a7ac0ce4fbced5ccb6bde9e2, type: 3}
+  prefab: {fileID: 6894538958263808225, guid: 05ac81ca8a050134c8fe4796ba2df0e1, type: 3}
   indexer: {fileID: 0}
