@@ -183,7 +183,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dianna
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5628938980851315349, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 2853865460096586165, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 6950448206514501233, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 9132183159651577255, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
+    - {fileID: 773843226666501766, guid: 16865853abb691e47b47a04de6e5b1a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
