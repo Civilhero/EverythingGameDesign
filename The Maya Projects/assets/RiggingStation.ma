@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: RiggingStation.ma
-//Last modified: Thu, Jan 15, 2026 01:07:59 PM
+//Last modified: Thu, Jan 15, 2026 03:05:42 PM
 //Codeset: 1252
 requires maya "2024";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.3.4.1";
@@ -11,23 +11,23 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "C18B615A-43A4-00EB-449C-5794735434DE";
+fileInfo "UUID" "69420D3C-4D71-5463-69CB-0CB3E82CDB63";
 createNode transform -s -n "persp";
 	rename -uid "5E1A9FD6-4D0B-FA29-BE95-6F99FE5C5153";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 8.646236775539446 20.719481650120589 37.284833634659861 ;
-	setAttr ".r" -type "double3" -16.926108787788461 12.102667803835159 -2.561622783340966e-14 ;
-	setAttr ".rp" -type "double3" 9.4368957093138306e-16 0 7.1054273576010019e-15 ;
-	setAttr ".rpt" -type "double3" -7.1551037825967147e-15 -5.6547267922999611e-15 -1.5622858570349745e-14 ;
+	setAttr ".t" -type "double3" 41.820613115593964 17.955983961771693 5.7726865619165713 ;
+	setAttr ".r" -type "double3" 167.27389121229595 97.093503458001223 179.99999999998016 ;
+	setAttr ".rp" -type "double3" 0 -7.1054273576010019e-15 0 ;
+	setAttr ".rpt" -type "double3" -2.3854526188284522e-14 2.1118662856200897e-15 -2.8998162344436644e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "4F19226C-4C36-5F1F-2B50-8CA30F737387";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 39.848141576210111;
+	setAttr ".coi" 49.490895308747874;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 0.65343059449870289 9.1181666998814084 0.010191746972189719 ;
+	setAttr ".tp" -type "double3" -1.0948769159836309 9.3715255020866408 2.3766301914747778 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "98E94018-4C8F-A177-370B-75BBD3BDFE36";
@@ -79,10 +79,42 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
-createNode transform -n "mainTorso";
+createNode transform -n "nurbsCircle1";
+	rename -uid "CB87279A-40BE-B196-688D-0E9F7A7E22D5";
+	setAttr ".rp" -type "double3" 0.44650166328728291 0 0 ;
+	setAttr ".sp" -type "double3" 0.44650166328728291 0 0 ;
+createNode nurbsCurve -n "nurbsCircleShape1" -p "nurbsCircle1";
+	rename -uid "6A08E503-4152-3234-ECD2-69859539D318";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		5.2658370119266067 4.7982373409884731e-17 -4.8193353486393251
+		0.44650166328728336 6.7857323231109122e-17 -6.8155694116697987
+		-4.3728336853520418 4.7982373409884719e-17 -4.8193353486393233
+		-6.369067748382518 3.5177356190060272e-33 -3.5332032184033038e-16
+		-4.3728336853520418 -4.7982373409884725e-17 4.8193353486393242
+		0.44650166328728225 -6.7857323231109171e-17 6.8155694116698031
+		5.2658370119266067 -4.7982373409884719e-17 4.8193353486393233
+		7.2620710749570847 -9.2536792101100989e-33 9.2943679424297077e-16
+		5.2658370119266067 4.7982373409884731e-17 -4.8193353486393251
+		0.44650166328728336 6.7857323231109122e-17 -6.8155694116697987
+		-4.3728336853520418 4.7982373409884719e-17 -4.8193353486393233
+		;
+createNode transform -n "mainTorso" -p "nurbsCircle1";
 	rename -uid "98F891E2-4935-1B42-6F79-B8A73DE57802";
-	setAttr ".rp" -type "double3" 0.23077329592271756 11.506477375653853 0.014718620820733719 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 11.506477375653853 0.014718620820733719 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 9.7145776748657227 0.014718620820733719 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 9.7145776748657227 0.014718620820733719 ;
 createNode mesh -n "mainTorsoShape" -p "mainTorso";
 	rename -uid "B76B40B3-4102-3008-8D84-4DB1905D08DF";
 	setAttr -k off ".v";
@@ -134,10 +166,27 @@ createNode mesh -n "mainTorsoShape" -p "mainTorso";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "chest" -p "mainTorso";
+createNode transform -n "uppergroup" -p "mainTorso";
+	rename -uid "E94A2086-4F4D-15F9-8C59-AA88EFB727AE";
+	setAttr ".rp" -type "double3" 0.28821315571106521 13.409998994105759 0 ;
+	setAttr ".sp" -type "double3" 0.28821315571106521 13.409998994105759 0 ;
+createNode locator -n "uppergroupShape" -p "uppergroup";
+	rename -uid "E6216205-4EB7-DD31-AAE1-09AEECEA1B4B";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.28821315571106521 13.409998994105759 0 ;
+createNode transform -n "chest" -p "uppergroup";
 	rename -uid "9A953583-4DAD-EAA6-B37F-5DAB19F318F7";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 0.014718620820733719 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 0.014718620820733719 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 13.49567985534668 0.014718620820733719 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 13.49567985534668 0.014718620820733719 ;
 createNode mesh -n "chestShape" -p "chest";
 	rename -uid "5D06621F-4869-F1DB-6904-E3A7D5ED05AD";
 	setAttr -k off ".v";
@@ -189,175 +238,27 @@ createNode mesh -n "chestShape" -p "chest";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "RBicep" -p "chest";
-	rename -uid "C44F7F40-41A6-16E2-C422-BDB2C406DCBA";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 4.3441579330291802 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 4.3441579330291802 ;
-createNode mesh -n "RBicepShape" -p "RBicep";
-	rename -uid "AAB160A5-42FC-1285-36EA-AFA16F92E169";
+createNode transform -n "Larmgroup" -p "chest";
+	rename -uid "7A2F3B4B-4E6D-A1D5-83B5-CCB7BFAF8820";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 -2.2588663275123411 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 -2.2588663275123411 ;
+createNode locator -n "LarmgroupShape" -p "Larmgroup";
+	rename -uid "B95CB49A-45E6-9F25-73A9-709F3E0D3E7A";
 	setAttr -k off ".v";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 6 ".gtag";
-	setAttr ".gtag[0].gtagnm" -type "string" "back";
-	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
-	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
-	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
-	setAttr ".gtag[2].gtagnm" -type "string" "front";
-	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
-	setAttr ".gtag[3].gtagnm" -type "string" "left";
-	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
-	setAttr ".gtag[4].gtagnm" -type "string" "right";
-	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
-	setAttr ".gtag[5].gtagnm" -type "string" "top";
-	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
-		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
-		 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.049147531 14.54451 5.8113322 
-		0.41239905 14.54451 5.8113322 0.049147531 14.502789 5.8113322 0.41239905 14.502789 
-		5.8113322 0.049147531 14.502789 2.8769836 0.41239905 14.502789 2.8769836 0.049147531 
-		14.54451 2.8769836 0.41239905 14.54451 2.8769836;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
-		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
-		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
-	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5
-		mu 0 4 0 1 3 2
-		f 4 1 7 -3 -7
-		mu 0 4 2 3 5 4
-		f 4 2 9 -4 -9
-		mu 0 4 4 5 7 6
-		f 4 3 11 -1 -11
-		mu 0 4 6 7 9 8
-		f 4 -12 -10 -8 -6
-		mu 0 4 1 10 11 3
-		f 4 10 4 6 8
-		mu 0 4 12 0 2 13;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
-	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "RForeArm" -p "RBicep";
-	rename -uid "DADCAB76-49DB-5509-EDE5-F1BAF04D666A";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 8.518819415044824 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 8.518819415044824 ;
-createNode mesh -n "RForeArmShape" -p "RForeArm";
-	rename -uid "548B7A18-4D03-299F-FC93-06A292CB03F9";
-	setAttr -k off ".v";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 6 ".gtag";
-	setAttr ".gtag[0].gtagnm" -type "string" "back";
-	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
-	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
-	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
-	setAttr ".gtag[2].gtagnm" -type "string" "front";
-	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
-	setAttr ".gtag[3].gtagnm" -type "string" "left";
-	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
-	setAttr ".gtag[4].gtagnm" -type "string" "right";
-	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
-	setAttr ".gtag[5].gtagnm" -type "string" "top";
-	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
-		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
-		 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.049147531 14.54451 9.9859934 
-		0.41239905 14.54451 9.9859934 0.049147531 14.502789 9.9859934 0.41239905 14.502789 
-		9.9859934 0.049147531 14.502789 7.0516453 0.41239905 14.502789 7.0516453 0.049147531 
-		14.54451 7.0516453 0.41239905 14.54451 7.0516453;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
-		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
-		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
-	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5
-		mu 0 4 0 1 3 2
-		f 4 1 7 -3 -7
-		mu 0 4 2 3 5 4
-		f 4 2 9 -4 -9
-		mu 0 4 4 5 7 6
-		f 4 3 11 -1 -11
-		mu 0 4 6 7 9 8
-		f 4 -12 -10 -8 -6
-		mu 0 4 1 10 11 3
-		f 4 10 4 6 8
-		mu 0 4 12 0 2 13;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
-	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "Rhand" -p "RForeArm";
-	rename -uid "DFFE6175-443C-5E88-39B8-48A4DE6B7819";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 11.24351407247428 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 11.24351407247428 ;
-createNode mesh -n "RhandShape" -p "Rhand";
-	rename -uid "53AA7FC5-4514-9EA0-CAEB-A79DD674644C";
-	setAttr -k off ".v";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 6 ".gtag";
-	setAttr ".gtag[0].gtagnm" -type "string" "back";
-	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
-	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
-	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
-	setAttr ".gtag[2].gtagnm" -type "string" "front";
-	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
-	setAttr ".gtag[3].gtagnm" -type "string" "left";
-	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
-	setAttr ".gtag[4].gtagnm" -type "string" "right";
-	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
-	setAttr ".gtag[5].gtagnm" -type "string" "top";
-	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
-		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
-		 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.10316429 14.51838 11.318785 
-		0.35838231 14.51838 11.318785 0.10316429 14.528918 11.318785 0.35838231 14.528918 
-		11.318785 0.10316429 14.528918 11.168243 0.35838231 14.528918 11.168243 0.10316429 
-		14.51838 11.168243 0.35838231 14.51838 11.168243;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
-		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
-		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
-	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5
-		mu 0 4 0 1 3 2
-		f 4 1 7 -3 -7
-		mu 0 4 2 3 5 4
-		f 4 2 9 -4 -9
-		mu 0 4 4 5 7 6
-		f 4 3 11 -1 -11
-		mu 0 4 6 7 9 8
-		f 4 -12 -10 -8 -6
-		mu 0 4 1 10 11 3
-		f 4 10 4 6 8
-		mu 0 4 12 0 2 13;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
-	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "LBicep" -p "chest";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 -2.2588663275123411 ;
+createNode transform -n "LBicep" -p "Larmgroup";
 	rename -uid "421C4FE8-419C-7FBB-4BEB-8EA49227FED1";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -4.2874679692672304 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -4.2874679692672304 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -2.320293664932251 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -2.320293664932251 ;
 createNode mesh -n "LBicepShape" -p "LBicep";
 	rename -uid "D45BCDAF-4184-1889-05CE-448F77143B80";
 	setAttr -k off ".v";
@@ -409,10 +310,27 @@ createNode mesh -n "LBicepShape" -p "LBicep";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "Lforearm" -p "LBicep";
+createNode transform -n "locator17" -p "LBicep";
+	rename -uid "FADC5D53-4944-F638-35DE-A1B4834DBD1F";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 -6.3423411297093732 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 -6.3423411297093732 ;
+createNode locator -n "locatorShape17" -p "locator17";
+	rename -uid "120047F1-4896-787F-E5D1-AF9C1CCC7020";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 -6.3423411297093732 ;
+createNode transform -n "Lforearm" -p "locator17";
 	rename -uid "B9AEE71F-4B4B-889E-6DAC-658F9A7C1088";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -8.4128150945592317 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -8.4128150945592317 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -6.4456405639648438 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -6.4456405639648438 ;
 createNode mesh -n "LforearmShape" -p "Lforearm";
 	rename -uid "8B60CAE5-4D8E-D132-D21A-C38BDE07BCC5";
 	setAttr -k off ".v";
@@ -464,10 +382,27 @@ createNode mesh -n "LforearmShape" -p "Lforearm";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "Lhand" -p "Lforearm";
+createNode transform -n "locator18" -p "Lforearm";
+	rename -uid "4D6F2AFA-4E65-21A9-31C8-8BB19C0211BA";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 -10.45810320094429 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 -10.45810320094429 ;
+createNode locator -n "locatorShape18" -p "locator18";
+	rename -uid "CAF03EDF-4151-0981-2E3C-0F859F8B71F8";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 -10.45810320094429 ;
+createNode transform -n "Lhand" -p "locator18";
 	rename -uid "BB56A6F1-4961-43C7-0CAF-AFB525DAA450";
-	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -11.130074093131757 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -11.130074093131757 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 -10.554803848266602 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 -10.554803848266602 ;
 createNode mesh -n "LhandShape" -p "Lhand";
 	rename -uid "5E3EF62C-48A6-57EE-E617-7CAD21A6D1F5";
 	setAttr -k off ".v";
@@ -519,10 +454,243 @@ createNode mesh -n "LhandShape" -p "Lhand";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "neck" -p "chest";
+createNode transform -n "Rarmgroup" -p "chest";
+	rename -uid "6B646D5D-43BD-4757-F299-BF9859C0586A";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 2.3114045935308734 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 2.3114045935308734 ;
+createNode locator -n "RarmgroupShape" -p "Rarmgroup";
+	rename -uid "441D19AA-44F7-8C56-03CE-C390E3EE0A98";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 2.3114045935308734 ;
+createNode transform -n "RBicep" -p "Rarmgroup";
+	rename -uid "C44F7F40-41A6-16E2-C422-BDB2C406DCBA";
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 2.376983642578125 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 2.376983642578125 ;
+createNode mesh -n "RBicepShape" -p "RBicep";
+	rename -uid "AAB160A5-42FC-1285-36EA-AFA16F92E169";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 6 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
+	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
+	setAttr ".gtag[2].gtagnm" -type "string" "front";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
+	setAttr ".gtag[3].gtagnm" -type "string" "left";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
+	setAttr ".gtag[4].gtagnm" -type "string" "right";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
+	setAttr ".gtag[5].gtagnm" -type "string" "top";
+	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
+		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.049147531 14.54451 5.8113322 
+		0.41239905 14.54451 5.8113322 0.049147531 14.502789 5.8113322 0.41239905 14.502789 
+		5.8113322 0.049147531 14.502789 2.8769836 0.41239905 14.502789 2.8769836 0.049147531 
+		14.54451 2.8769836 0.41239905 14.54451 2.8769836;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
+		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
+		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
+	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5
+		mu 0 4 0 1 3 2
+		f 4 1 7 -3 -7
+		mu 0 4 2 3 5 4
+		f 4 2 9 -4 -9
+		mu 0 4 4 5 7 6
+		f 4 3 11 -1 -11
+		mu 0 4 6 7 9 8
+		f 4 -12 -10 -8 -6
+		mu 0 4 1 10 11 3
+		f 4 10 4 6 8
+		mu 0 4 12 0 2 13;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "locator14" -p "RBicep";
+	rename -uid "A155F82C-404A-38BE-9909-7EA62F1E6BCA";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 6.4428846616088418 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 6.4428846616088418 ;
+createNode locator -n "locatorShape14" -p "locator14";
+	rename -uid "FE60626A-4E9D-7D28-C0D9-BB86AE3A6798";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 6.4428846616088418 ;
+createNode transform -n "RForeArm" -p "locator14";
+	rename -uid "DADCAB76-49DB-5509-EDE5-F1BAF04D666A";
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 6.5516452789306641 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 6.5516452789306641 ;
+createNode mesh -n "RForeArmShape" -p "RForeArm";
+	rename -uid "548B7A18-4D03-299F-FC93-06A292CB03F9";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 6 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
+	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
+	setAttr ".gtag[2].gtagnm" -type "string" "front";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
+	setAttr ".gtag[3].gtagnm" -type "string" "left";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
+	setAttr ".gtag[4].gtagnm" -type "string" "right";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
+	setAttr ".gtag[5].gtagnm" -type "string" "top";
+	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
+		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.049147531 14.54451 9.9859934 
+		0.41239905 14.54451 9.9859934 0.049147531 14.502789 9.9859934 0.41239905 14.502789 
+		9.9859934 0.049147531 14.502789 7.0516453 0.41239905 14.502789 7.0516453 0.049147531 
+		14.54451 7.0516453 0.41239905 14.54451 7.0516453;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
+		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
+		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
+	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5
+		mu 0 4 0 1 3 2
+		f 4 1 7 -3 -7
+		mu 0 4 2 3 5 4
+		f 4 2 9 -4 -9
+		mu 0 4 4 5 7 6
+		f 4 3 11 -1 -11
+		mu 0 4 6 7 9 8
+		f 4 -12 -10 -8 -6
+		mu 0 4 1 10 11 3
+		f 4 10 4 6 8
+		mu 0 4 12 0 2 13;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "locator15" -p "RForeArm";
+	rename -uid "C16BE545-410B-5585-1536-FC94A21DD5CA";
+	setAttr ".rp" -type "double3" 0.26775807526952056 14.510374503183252 10.57436472968681 ;
+	setAttr ".sp" -type "double3" 0.26775807526952056 14.510374503183252 10.57436472968681 ;
+createNode locator -n "locatorShape15" -p "locator15";
+	rename -uid "86DAF21D-4EC4-8DCB-FDF6-7F8E454D3097";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.26775807526952056 14.510374503183252 10.57436472968681 ;
+createNode transform -n "Rhand" -p "locator15";
+	rename -uid "DFFE6175-443C-5E88-39B8-48A4DE6B7819";
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 14.523649737179975 10.668243408203125 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 14.523649737179975 10.668243408203125 ;
+createNode mesh -n "RhandShape" -p "Rhand";
+	rename -uid "53AA7FC5-4514-9EA0-CAEB-A79DD674644C";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 6 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
+	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
+	setAttr ".gtag[2].gtagnm" -type "string" "front";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
+	setAttr ".gtag[3].gtagnm" -type "string" "left";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
+	setAttr ".gtag[4].gtagnm" -type "string" "right";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
+	setAttr ".gtag[5].gtagnm" -type "string" "top";
+	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
+		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.10316429 14.51838 11.318785 
+		0.35838231 14.51838 11.318785 0.10316429 14.528918 11.318785 0.35838231 14.528918 
+		11.318785 0.10316429 14.528918 11.168243 0.35838231 14.528918 11.168243 0.10316429 
+		14.51838 11.168243 0.35838231 14.51838 11.168243;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
+		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
+		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
+	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5
+		mu 0 4 0 1 3 2
+		f 4 1 7 -3 -7
+		mu 0 4 2 3 5 4
+		f 4 2 9 -4 -9
+		mu 0 4 4 5 7 6
+		f 4 3 11 -1 -11
+		mu 0 4 6 7 9 8
+		f 4 -12 -10 -8 -6
+		mu 0 4 1 10 11 3
+		f 4 10 4 6 8
+		mu 0 4 12 0 2 13;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "neckheadgroup" -p "chest";
+	rename -uid "442CDF9E-4F0B-BB27-C3C8-9F897CF7A9FE";
+	setAttr ".rp" -type "double3" 0.16375601355738811 15.633692793353706 0 ;
+	setAttr ".sp" -type "double3" 0.16375601355738811 15.633692793353706 0 ;
+createNode locator -n "neckheadgroupShape" -p "neckheadgroup";
+	rename -uid "DF656B8A-4AEC-AA07-EE02-2A9ABBD3C7BB";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.16375601355738811 15.633692793353706 0 ;
+createNode transform -n "neck" -p "neckheadgroup";
 	rename -uid "BE63D071-4FD1-916B-36A0-6590853E2B14";
-	setAttr ".rp" -type "double3" 0.17089837639841998 16.220400916030233 0.014718620820733719 ;
-	setAttr ".sp" -type "double3" 0.17089837639841998 16.220400916030233 0.014718620820733719 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.17089837639841998 15.697517395019531 0.014718620820733719 ;
+	setAttr ".sp" -type "double3" 0.17089837639841998 15.697517395019531 0.014718620820733719 ;
 createNode mesh -n "neckShape" -p "neck";
 	rename -uid "F87359A3-4575-F17C-504A-B8BB28B8A6E0";
 	setAttr -k off ".v";
@@ -574,10 +742,27 @@ createNode mesh -n "neckShape" -p "neck";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "Head" -p "neck";
+createNode transform -n "locator12" -p "neck";
+	rename -uid "57B02FED-4648-6007-285D-BD98CB19109E";
+	setAttr ".rp" -type "double3" 0.16375601355738811 16.778993830415573 0 ;
+	setAttr ".sp" -type "double3" 0.16375601355738811 16.778993830415573 0 ;
+createNode locator -n "locatorShape12" -p "locator12";
+	rename -uid "B16DF9ED-40E9-8141-E47E-478F42F31F3D";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.16375601355738811 16.778993830415573 0 ;
+createNode transform -n "Head" -p "locator12";
 	rename -uid "92FE5A34-4B2E-B7C7-78E6-4FAA86FFF6FB";
-	setAttr ".rp" -type "double3" 0.31935527760444238 17.841367592106664 0.014718620820733719 ;
-	setAttr ".sp" -type "double3" 0.31935527760444238 17.841367592106664 0.014718620820733719 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.31935527760444238 16.914491653442383 0.014718620820733719 ;
+	setAttr ".sp" -type "double3" 0.31935527760444238 16.914491653442383 0.014718620820733719 ;
 createNode mesh -n "HeadShape" -p "Head";
 	rename -uid "ABE00EA4-41B5-2FC5-7B95-469A803C3FAF";
 	setAttr -k off ".v";
@@ -629,10 +814,27 @@ createNode mesh -n "HeadShape" -p "Head";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "pelvis" -p "mainTorso";
+createNode transform -n "lowergroup" -p "mainTorso";
+	rename -uid "A534BCF0-4DA9-ACFC-BB4D-E0BB51EA05F9";
+	setAttr ".rp" -type "double3" 0.28821315571106521 9.5275392116592101 0 ;
+	setAttr ".sp" -type "double3" 0.28821315571106521 9.5275392116592101 0 ;
+createNode locator -n "lowergroupShape" -p "lowergroup";
+	rename -uid "954880B9-41D9-25A5-8161-8BB53F8AFF80";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.28821315571106521 9.5275392116592101 0 ;
+createNode transform -n "pelvis" -p "lowergroup";
 	rename -uid "C0229F42-425A-A773-4A31-CDA171B8C260";
-	setAttr ".rp" -type "double3" 0.23077329592271756 8.4538125840435683 0.014718620820733719 ;
-	setAttr ".sp" -type "double3" 0.23077329592271756 8.4538125840435683 0.014718620820733719 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.23077329592271756 9.3916378021240234 0.014718620820733719 ;
+	setAttr ".sp" -type "double3" 0.23077329592271756 9.3916378021240234 0.014718620820733719 ;
 createNode mesh -n "pelvisShape" -p "pelvis";
 	rename -uid "D157CCCA-4801-000B-7C2F-23A470712D9E";
 	setAttr -k off ".v";
@@ -659,10 +861,10 @@ createNode mesh -n "pelvisShape" -p "pelvis";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.025371352 8.0159864 1.7326133 
-		0.43617523 8.0159864 1.7326133 0.025371352 8.8916378 1.7326133 0.43617523 8.8916378 
-		1.7326133 0.025371352 8.8916378 -1.7031755 0.43617523 8.8916378 -1.7031755 0.025371352 
-		8.0159864 -1.7031755 0.43617523 8.0159864 -1.7031755;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.028306153 8.0148849 1.7326133 
+		0.43910831 8.0170918 1.7326133 0.025372215 8.8905344 1.7326133 0.43617436 8.8927412 
+		1.7326133 0.025372215 8.8905344 -1.7031755 0.43617436 8.8927412 -1.7031755 0.028306153 
+		8.0148849 -1.7031755 0.43910831 8.0170918 -1.7031755;
 	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
 		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
@@ -686,8 +888,17 @@ createNode mesh -n "pelvisShape" -p "pelvis";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "RThigh" -p "pelvis";
 	rename -uid "1AA99636-4844-97BE-6A63-47AA029FDCCF";
-	setAttr ".rp" -type "double3" 0.31085817913058555 5.6089577514709479 1.5444451126592154 ;
-	setAttr ".sp" -type "double3" 0.31085817913058555 5.6089577514709479 1.5444451126592154 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.31449974896879884 7.0636657164619923 1.5444451126592154 ;
+	setAttr ".sp" -type "double3" 0.31449974896879884 7.0636657164619923 1.5444451126592154 ;
 createNode mesh -n "RThighShape" -p "RThigh";
 	rename -uid "C3BD296B-4FDC-03B3-59E5-8FA538520FCC";
 	setAttr -k off ".v";
@@ -714,10 +925,10 @@ createNode mesh -n "RThighShape" -p "RThigh";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31085819 4.654376 1.544445 
-		0.31085819 4.654376 1.544445 0.31085819 6.5635376 1.544445 0.31085819 6.5635376 1.544445 
-		0.31085819 6.5635376 1.544445 0.31085819 6.5635376 1.544445 0.31085819 4.654376 1.544445 
-		0.31085819 4.654376 1.544445;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31085825 4.654376 1.544445 
+		0.31085825 4.654376 1.544445 0.31085822 6.5635376 1.5444448 0.31085825 6.5635376 
+		1.5444448 0.31085819 6.5635376 1.5444448 0.31085825 6.5635376 1.5444449 0.31085825 
+		4.654376 1.5444448 0.31085825 4.654376 1.5444449;
 	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
 		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
@@ -741,8 +952,17 @@ createNode mesh -n "RThighShape" -p "RThigh";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "Rlowerleg" -p "RThigh";
 	rename -uid "21BA1AEF-47EE-F1C3-DAAC-97AFCEE6422B";
-	setAttr ".rp" -type "double3" 0.31085817913058555 2.6616500845380369 1.5444451126592154 ;
-	setAttr ".sp" -type "double3" 0.31085817913058555 2.6616500845380369 1.5444451126592154 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.31945701830335338 3.8945118501476625 1.5444451126592154 ;
+	setAttr ".sp" -type "double3" 0.31945701830335338 3.8945118501476625 1.5444451126592154 ;
 createNode mesh -n "RlowerlegShape" -p "Rlowerleg";
 	rename -uid "F6DCA9F5-4B9D-7B30-C578-AEADD8F9C7A0";
 	setAttr -k off ".v";
@@ -769,10 +989,10 @@ createNode mesh -n "RlowerlegShape" -p "Rlowerleg";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31085819 1.9289203 1.544445 
-		0.31085819 1.9289203 1.544445 0.31085819 3.3943799 1.544445 0.31085819 3.3943799 
-		1.544445 0.31085819 3.3943799 1.544445 0.31085819 3.3943799 1.544445 0.31085819 1.9289203 
-		1.544445 0.31085819 1.9289203 1.544445;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31085825 1.9289203 1.544445 
+		0.31085825 1.9289203 1.544445 0.31085822 3.3943799 1.544445 0.31085831 3.3943799 
+		1.544445 0.31085822 3.3943799 1.544445 0.31085813 3.3943799 1.5444452 0.31085825 
+		1.9289201 1.544445 0.31085825 1.9289201 1.544445;
 	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
 		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
@@ -796,8 +1016,17 @@ createNode mesh -n "RlowerlegShape" -p "Rlowerleg";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "RHeel" -p "Rlowerleg";
 	rename -uid "E059E775-4039-CFA5-EFC5-A0BDD00A643F";
-	setAttr ".rp" -type "double3" 0.11500555741423524 0.61187763289473529 1.5444451126592154 ;
-	setAttr ".sp" -type "double3" 0.11500555741423524 0.61187763289473529 1.5444451126592154 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.12795709019141044 1.1117066034978529 1.5444451126592154 ;
+	setAttr ".sp" -type "double3" 0.12795709019141044 1.1117066034978529 1.5444451126592154 ;
 createNode mesh -n "RHeelShape" -p "RHeel";
 	rename -uid "67798C1E-4715-FAC6-DEBC-0C9471E35C64";
 	setAttr -k off ".v";
@@ -824,10 +1053,10 @@ createNode mesh -n "RHeelShape" -p "RHeel";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.11500556 0.61187756 1.544445 
-		0.11500556 0.61187756 1.544445 0.11500556 0.61187756 1.544445 0.11500556 0.61187756 
-		1.544445 0.11500556 0.61187756 1.544445 0.11500556 0.61187756 1.544445 0.11500556 
-		0.61187756 1.544445 0.11500556 0.61187756 1.544445;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.11500555 0.61187756 1.544445 
+		0.11500555 0.61187756 1.544445 0.11500555 0.61187756 1.544445 0.11500555 0.61187762 
+		1.544445 0.11500555 0.61187756 1.544445 0.11500555 0.61187756 1.544445 0.11500555 
+		0.6118775 1.544445 0.11500555 0.61187756 1.544445;
 	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
 		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
@@ -851,8 +1080,17 @@ createNode mesh -n "RHeelShape" -p "RHeel";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "Rfoot" -p "RHeel";
 	rename -uid "8046412D-45AF-847C-4176-C4AD5E6E96C1";
-	setAttr ".rp" -type "double3" 1.2714249424009401 0.61187763289473529 1.5444451126592154 ;
-	setAttr ".sp" -type "double3" 1.2714249424009401 0.61187763289473529 1.5444451126592154 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.78515773065133876 0.61273407367232469 1.5444451126592154 ;
+	setAttr ".sp" -type "double3" 0.78515773065133876 0.61273407367232469 1.5444451126592154 ;
 createNode mesh -n "RfootShape" -p "Rfoot";
 	rename -uid "6AED067C-411B-C754-817D-FC94BBF4650C";
 	setAttr -k off ".v";
@@ -906,8 +1144,17 @@ createNode mesh -n "RfootShape" -p "Rfoot";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "LThigh" -p "pelvis";
 	rename -uid "677D1F47-4625-9D51-1D27-369EE37918F5";
-	setAttr ".rp" -type "double3" 0.31085817913058555 5.6089577514709479 -1.4616976969762143 ;
-	setAttr ".sp" -type "double3" 0.31085817913058555 5.6089577514709479 -1.4616976969762143 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.31449974896879884 7.0636657164619923 -1.4616976969762143 ;
+	setAttr ".sp" -type "double3" 0.31449974896879884 7.0636657164619923 -1.4616976969762143 ;
 createNode mesh -n "LThighShape" -p "LThigh";
 	rename -uid "809FD5AA-41B3-1AFF-9658-6BBBC59CC07C";
 	setAttr -k off ".v";
@@ -934,10 +1181,10 @@ createNode mesh -n "LThighShape" -p "LThigh";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31085819 4.654376 -1.4616977 
-		0.31085819 4.654376 -1.4616977 0.31085819 6.5635376 -1.4616977 0.31085819 6.5635376 
-		-1.4616977 0.31085819 6.5635376 -1.4616977 0.31085819 6.5635376 -1.4616977 0.31085819 
-		4.654376 -1.4616977 0.31085819 4.654376 -1.4616977;
+	setAttr -s 8 ".pt[0:7]" -type "float3"  0.31905094 4.6537256 -1.4616977 
+		0.31904972 4.6552896 -1.4616977 0.31450036 6.5628834 -1.4616977 0.31449914 6.5644479 
+		-1.4616977 0.31450036 6.5628834 -1.4616977 0.31449914 6.5644479 -1.4616977 0.31905094 
+		4.6537256 -1.4616977 0.31904972 4.6552896 -1.4616977;
 	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
 		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
@@ -961,8 +1208,17 @@ createNode mesh -n "LThighShape" -p "LThigh";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "Llowerleg" -p "LThigh";
 	rename -uid "A5AB8F3D-497A-E311-C740-13A10E0DA986";
-	setAttr ".rp" -type "double3" 0.31085817913058555 2.6616500845380369 -1.4616976969762143 ;
-	setAttr ".sp" -type "double3" 0.31085817913058555 2.6616500845380369 -1.4616976969762143 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.31945701830335338 3.8945118501476625 -1.4616976969762143 ;
+	setAttr ".sp" -type "double3" 0.31945701830335338 3.8945118501476625 -1.4616976969762143 ;
 createNode mesh -n "LlowerlegShape" -p "Llowerleg";
 	rename -uid "61A38C4B-4FFE-ABDD-81D9-E59D1CA065A1";
 	setAttr -k off ".v";
@@ -1016,8 +1272,17 @@ createNode mesh -n "LlowerlegShape" -p "Llowerleg";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "LHeel" -p "Llowerleg";
 	rename -uid "827101BE-440E-FB75-0F4D-A2B36B4732CB";
-	setAttr ".rp" -type "double3" 0.11500555741423524 0.61187763289473529 -1.4616976969762143 ;
-	setAttr ".sp" -type "double3" 0.11500555741423524 0.61187763289473529 -1.4616976969762143 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.12795709019141044 1.1117066034978529 -1.4616976969762143 ;
+	setAttr ".sp" -type "double3" 0.12795709019141044 1.1117066034978529 -1.4616976969762143 ;
 createNode mesh -n "LHeelShape" -p "LHeel";
 	rename -uid "F4240753-4E9A-0BC5-0ED8-F6BFB694FF96";
 	setAttr -k off ".v";
@@ -1071,8 +1336,17 @@ createNode mesh -n "LHeelShape" -p "LHeel";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "Lfoot" -p "LHeel";
 	rename -uid "91E23493-4FD4-5113-6BA9-47931479635A";
-	setAttr ".rp" -type "double3" 1.2714249424009401 0.61187763289473529 -1.4616976969762143 ;
-	setAttr ".sp" -type "double3" 1.2714249424009401 0.61187763289473529 -1.4616976969762143 ;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr ".rp" -type "double3" 0.78515773065133876 0.61273407367232469 -1.4616976969762143 ;
+	setAttr ".sp" -type "double3" 0.78515773065133876 0.61273407367232469 -1.4616976969762143 ;
 createNode mesh -n "LfootShape" -p "Lfoot";
 	rename -uid "1088A1A0-47D6-B45C-7252-7CAB5C8DE481";
 	setAttr -k off ".v";
@@ -1124,21 +1398,85 @@ createNode mesh -n "LfootShape" -p "Lfoot";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "locator10" -p "pelvis";
+	rename -uid "E80C3482-49BE-3A16-5E37-869DD4C79D09";
+	setAttr ".rp" -type "double3" 0.33779157509451707 7.246263574793554 -1.5029288121250162 ;
+	setAttr ".sp" -type "double3" 0.33779157509451707 7.246263574793554 -1.5029288121250162 ;
+createNode locator -n "locatorShape10" -p "locator10";
+	rename -uid "23040D25-48CC-9765-C29D-A1ABB100FC41";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.33779157509451707 7.246263574793554 -1.5029288121250162 ;
+createNode transform -n "locator9" -p "pelvis";
+	rename -uid "5EB30760-4181-5C06-CEAE-A9A9931F957D";
+	setAttr ".rp" -type "double3" 0.33779157509451707 7.246263574793554 1.5522375246883051 ;
+	setAttr ".sp" -type "double3" 0.33779157509451707 7.246263574793554 1.5522375246883051 ;
+createNode locator -n "locatorShape9" -p "locator9";
+	rename -uid "80DC9B71-43D0-D2D6-F45F-1086C1C5977C";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.33779157509451707 7.246263574793554 1.5522375246883051 ;
+createNode transform -n "locator8" -p "pelvis";
+	rename -uid "CDF46AFF-4E3E-ADCB-70FC-1ABA31DCFD16";
+	setAttr ".rp" -type "double3" 0.28284204912351951 3.9980174607849941 -1.5029288121250162 ;
+	setAttr ".sp" -type "double3" 0.28284204912351951 3.9980174607849941 -1.5029288121250162 ;
+createNode locator -n "locatorShape8" -p "locator8";
+	rename -uid "ACEA7DF1-4674-BB31-FCB7-BE98A7C13CC8";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.28284204912351951 3.9980174607849941 -1.5029288121250162 ;
+createNode transform -n "locator7" -p "pelvis";
+	rename -uid "30163CB8-4E60-6FF7-5C4F-E2BF8C3F496C";
+	setAttr ".rp" -type "double3" 0.28284204912351951 3.9980174607849941 1.5522375246883051 ;
+	setAttr ".sp" -type "double3" 0.28284204912351951 3.9980174607849941 1.5522375246883051 ;
+createNode locator -n "locatorShape7" -p "locator7";
+	rename -uid "E158011C-42F5-8A4B-E401-FFB4400A7F83";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.28284204912351951 3.9980174607849941 1.5522375246883051 ;
+createNode transform -n "locator6" -p "pelvis";
+	rename -uid "AAA23649-4EF4-C139-0B9C-158929133347";
+	setAttr ".rp" -type "double3" 0.22789252315252195 1.2667469085000922 1.5522375246883051 ;
+	setAttr ".sp" -type "double3" 0.22789252315252195 1.2667469085000922 1.5522375246883051 ;
+createNode locator -n "locatorShape6" -p "locator6";
+	rename -uid "4237D097-4B7B-A41C-DB5A-9FA3BCE3F311";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.22789252315252195 1.2667469085000922 1.5522375246883051 ;
+createNode transform -n "locator5" -p "pelvis";
+	rename -uid "8D774BE6-43B8-C7C5-C3C6-6BBFD52991C3";
+	setAttr ".rp" -type "double3" 0.22789252315252195 1.2667469085000922 -1.5029288121250162 ;
+	setAttr ".sp" -type "double3" 0.22789252315252195 1.2667469085000922 -1.5029288121250162 ;
+createNode locator -n "locatorShape5" -p "locator5";
+	rename -uid "3D449755-4ECC-8FBC-611B-7A8F6E17E015";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.22789252315252195 1.2667469085000922 -1.5029288121250162 ;
+createNode transform -n "locator4" -p "pelvis";
+	rename -uid "001DB405-43E2-042D-59D0-87BEC7AA392A";
+	setAttr ".rp" -type "double3" 0.69467509088031476 0.53125135545702906 -1.5029288121250162 ;
+	setAttr ".sp" -type "double3" 0.69467509088031476 0.53125135545702906 -1.5029288121250162 ;
+createNode locator -n "locatorShape4" -p "locator4";
+	rename -uid "B7D68B0E-421B-9877-E55A-B08EF453C884";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.69467509088031476 0.53125135545702906 -1.5029288121250162 ;
+createNode transform -n "locator3" -p "pelvis";
+	rename -uid "7AEAE877-4C4A-5589-6F9E-02B82E858ED8";
+	setAttr ".rp" -type "double3" 0.69467509088031476 0.53125135545702906 1.5522375246883051 ;
+	setAttr ".sp" -type "double3" 0.69467509088031476 0.53125135545702906 1.5522375246883051 ;
+createNode locator -n "locatorShape3" -p "locator3";
+	rename -uid "C4888A6E-4A21-CD71-4D3E-F996075102F4";
+	setAttr -k off ".v";
+	setAttr ".lp" -type "double3" 0.69467509088031476 0.53125135545702906 1.5522375246883051 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "7849DE1C-443B-C5CE-992F-879565218C7C";
+	rename -uid "39D043FC-428B-0525-2809-9DBDC534223F";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "FB962AC0-4192-4688-C482-33AB0289E3A6";
+	rename -uid "D1258857-4DB5-562F-D325-BE8CD3038425";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "644DE4C7-4B4C-1DBE-F71B-0FB1EA062F2A";
+	rename -uid "689616B7-4EF8-2C13-91C0-ECAADD5BBC5D";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "D1D4F4F9-4A65-6D32-7881-AF8B1CF111A4";
+	rename -uid "E7552403-4D89-41DB-905A-0C92DB7AFEA5";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "04CAFD10-4E94-3705-CD13-AD8153E5D056";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "70B912CF-4EED-C820-27DF-A387330891FC";
+	rename -uid "9C09D1E9-4EF0-DD55-2E61-AE980BD42F19";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "20DFB938-4E29-0CFA-14F0-BF92DAE64F51";
 	setAttr ".g" yes;
@@ -1204,128 +1542,242 @@ createNode script -n "sceneConfigurationScriptNode";
 	setAttr ".b" -type "string" "playbackOptions -min 0 -max 60 -ast 0 -aet 62 ";
 	setAttr ".st" 6;
 createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
-	rename -uid "9785D180-4E03-64B3-03C0-A9B8B2944A00";
+	rename -uid "B0478758-4210-23B5-C996-F6AA7CB8CA9D";
 	setAttr ".sst" -type "string" "";
 createNode nodeGraphEditorInfo -n "MayaNodeEditorSavedTabsInfo";
-	rename -uid "9C209E3A-41C1-80F5-ADD4-FBA8C4A1311E";
+	rename -uid "E5E73335-429F-9499-8405-5391EF629129";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -270.23808449979867 -123.84640816582636 ;
-	setAttr ".tgi[0].vh" -type "double2" 664.28568788937264 182.17973918120143 ;
-	setAttr -s 38 ".tgi[0].ni";
+	setAttr ".tgi[0].vl" -type "double2" -271.34789753981067 -124.99999503294644 ;
+	setAttr ".tgi[0].vh" -type "double2" 666.58597707255569 182.14284990515054 ;
+	setAttr -s 76 ".tgi[0].ni";
 	setAttr ".tgi[0].ni[0].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[0].y" -651.4285888671875;
+	setAttr ".tgi[0].ni[0].y" 778.5714111328125;
 	setAttr ".tgi[0].ni[0].nvs" 18304;
-	setAttr ".tgi[0].ni[1].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[1].y" -521.4285888671875;
+	setAttr ".tgi[0].ni[1].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[1].y" 572.85711669921875;
 	setAttr ".tgi[0].ni[1].nvs" 18304;
-	setAttr ".tgi[0].ni[2].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[2].y" -2731.428466796875;
+	setAttr ".tgi[0].ni[2].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[2].y" 2297.142822265625;
 	setAttr ".tgi[0].ni[2].nvs" 18304;
-	setAttr ".tgi[0].ni[3].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[3].y" -2471.428466796875;
+	setAttr ".tgi[0].ni[3].x" -131.79905700683594;
+	setAttr ".tgi[0].ni[3].y" 111.34846496582031;
 	setAttr ".tgi[0].ni[3].nvs" 18304;
 	setAttr ".tgi[0].ni[4].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[4].y" -2211.428466796875;
+	setAttr ".tgi[0].ni[4].y" 2078.571533203125;
 	setAttr ".tgi[0].ni[4].nvs" 18304;
-	setAttr ".tgi[0].ni[5].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[5].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[5].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[5].y" 1282.857177734375;
 	setAttr ".tgi[0].ni[5].nvs" 18304;
 	setAttr ".tgi[0].ni[6].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[6].y" -1691.4285888671875;
+	setAttr ".tgi[0].ni[6].y" 1168.5714111328125;
 	setAttr ".tgi[0].ni[6].nvs" 18304;
 	setAttr ".tgi[0].ni[7].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[7].y" 128.57142639160156;
+	setAttr ".tgi[0].ni[7].y" 1948.5714111328125;
 	setAttr ".tgi[0].ni[7].nvs" 18304;
-	setAttr ".tgi[0].ni[8].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[8].y" 258.57144165039062;
+	setAttr ".tgi[0].ni[8].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[8].y" 1384.2857666015625;
 	setAttr ".tgi[0].ni[8].nvs" 18304;
-	setAttr ".tgi[0].ni[9].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[9].y" 518.5714111328125;
+	setAttr ".tgi[0].ni[9].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[9].y" 1485.7142333984375;
 	setAttr ".tgi[0].ni[9].nvs" 18304;
 	setAttr ".tgi[0].ni[10].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[10].y" 648.5714111328125;
+	setAttr ".tgi[0].ni[10].y" 2858.571533203125;
 	setAttr ".tgi[0].ni[10].nvs" 18304;
-	setAttr ".tgi[0].ni[11].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[11].y" 778.5714111328125;
+	setAttr ".tgi[0].ni[11].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[11].y" 1790;
 	setAttr ".tgi[0].ni[11].nvs" 18304;
-	setAttr ".tgi[0].ni[12].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[12].y" -651.4285888671875;
+	setAttr ".tgi[0].ni[12].x" 103.58144378662109;
+	setAttr ".tgi[0].ni[12].y" 15.794391632080078;
 	setAttr ".tgi[0].ni[12].nvs" 18304;
-	setAttr ".tgi[0].ni[13].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[13].y" -521.4285888671875;
+	setAttr ".tgi[0].ni[13].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[13].y" 674.28570556640625;
 	setAttr ".tgi[0].ni[13].nvs" 18304;
-	setAttr ".tgi[0].ni[14].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[14].y" -261.42855834960938;
+	setAttr ".tgi[0].ni[14].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[14].y" 1688.5714111328125;
 	setAttr ".tgi[0].ni[14].nvs" 18304;
-	setAttr ".tgi[0].ni[15].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[15].y" -131.42857360839844;
+	setAttr ".tgi[0].ni[15].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[15].y" 1891.4285888671875;
 	setAttr ".tgi[0].ni[15].nvs" 18304;
 	setAttr ".tgi[0].ni[16].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[16].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[16].y" -131.42857360839844;
 	setAttr ".tgi[0].ni[16].nvs" 18304;
-	setAttr ".tgi[0].ni[17].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[17].y" 128.57142639160156;
+	setAttr ".tgi[0].ni[17].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[17].y" 775.71429443359375;
 	setAttr ".tgi[0].ni[17].nvs" 18304;
 	setAttr ".tgi[0].ni[18].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[18].y" 258.57144165039062;
+	setAttr ".tgi[0].ni[18].y" 648.5714111328125;
 	setAttr ".tgi[0].ni[18].nvs" 18304;
 	setAttr ".tgi[0].ni[19].x" 101.42857360839844;
 	setAttr ".tgi[0].ni[19].y" 388.57144165039062;
 	setAttr ".tgi[0].ni[19].nvs" 18304;
-	setAttr ".tgi[0].ni[20].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[20].y" 518.5714111328125;
+	setAttr ".tgi[0].ni[20].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[20].y" 978.5714111328125;
 	setAttr ".tgi[0].ni[20].nvs" 18304;
 	setAttr ".tgi[0].ni[21].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[21].y" 648.5714111328125;
+	setAttr ".tgi[0].ni[21].y" 908.5714111328125;
 	setAttr ".tgi[0].ni[21].nvs" 18304;
 	setAttr ".tgi[0].ni[22].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[22].y" 778.5714111328125;
+	setAttr ".tgi[0].ni[22].y" 518.5714111328125;
 	setAttr ".tgi[0].ni[22].nvs" 18304;
-	setAttr ".tgi[0].ni[23].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[23].y" 908.5714111328125;
+	setAttr ".tgi[0].ni[23].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[23].y" 1992.857177734375;
 	setAttr ".tgi[0].ni[23].nvs" 18304;
-	setAttr ".tgi[0].ni[24].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[24].y" 1168.5714111328125;
+	setAttr ".tgi[0].ni[24].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[24].y" 877.14288330078125;
 	setAttr ".tgi[0].ni[24].nvs" 18304;
 	setAttr ".tgi[0].ni[25].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[25].y" 1298.5714111328125;
+	setAttr ".tgi[0].ni[25].y" 778.5714111328125;
 	setAttr ".tgi[0].ni[25].nvs" 18304;
 	setAttr ".tgi[0].ni[26].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[26].y" 1558.5714111328125;
+	setAttr ".tgi[0].ni[26].y" 1818.5714111328125;
 	setAttr ".tgi[0].ni[26].nvs" 18304;
-	setAttr ".tgi[0].ni[27].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[27].y" 1688.5714111328125;
+	setAttr ".tgi[0].ni[27].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[27].y" 1181.4285888671875;
 	setAttr ".tgi[0].ni[27].nvs" 18304;
 	setAttr ".tgi[0].ni[28].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[28].y" 1818.5714111328125;
+	setAttr ".tgi[0].ni[28].y" -651.4285888671875;
 	setAttr ".tgi[0].ni[28].nvs" 18304;
-	setAttr ".tgi[0].ni[29].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[29].y" 1948.5714111328125;
+	setAttr ".tgi[0].ni[29].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[29].y" 471.42855834960938;
 	setAttr ".tgi[0].ni[29].nvs" 18304;
-	setAttr ".tgi[0].ni[30].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[30].y" 2078.571533203125;
+	setAttr ".tgi[0].ni[30].x" 257.14285278320312;
+	setAttr ".tgi[0].ni[30].y" -2.8571429252624512;
 	setAttr ".tgi[0].ni[30].nvs" 18304;
-	setAttr ".tgi[0].ni[31].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[31].y" 2208.571533203125;
+	setAttr ".tgi[0].ni[31].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[31].y" 1080;
 	setAttr ".tgi[0].ni[31].nvs" 18304;
-	setAttr ".tgi[0].ni[32].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[32].y" 2338.571533203125;
+	setAttr ".tgi[0].ni[32].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[32].y" -132.85714721679688;
 	setAttr ".tgi[0].ni[32].nvs" 18304;
 	setAttr ".tgi[0].ni[33].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[33].y" 2468.571533203125;
+	setAttr ".tgi[0].ni[33].y" -2471.428466796875;
 	setAttr ".tgi[0].ni[33].nvs" 18304;
-	setAttr ".tgi[0].ni[34].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[34].y" 2598.571533203125;
+	setAttr ".tgi[0].ni[34].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[34].y" -2.8571429252624512;
 	setAttr ".tgi[0].ni[34].nvs" 18304;
-	setAttr ".tgi[0].ni[35].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[35].y" 2728.571533203125;
+	setAttr ".tgi[0].ni[35].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[35].y" 127.14286041259766;
 	setAttr ".tgi[0].ni[35].nvs" 18304;
-	setAttr ".tgi[0].ni[36].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[36].y" 2858.571533203125;
+	setAttr ".tgi[0].ni[36].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[36].y" -2.8571429252624512;
 	setAttr ".tgi[0].ni[36].nvs" 18304;
-	setAttr ".tgi[0].ni[37].x" 101.42857360839844;
-	setAttr ".tgi[0].ni[37].y" 2988.571533203125;
+	setAttr ".tgi[0].ni[37].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[37].y" 127.14286041259766;
 	setAttr ".tgi[0].ni[37].nvs" 18304;
+	setAttr ".tgi[0].ni[38].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[38].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[38].nvs" 18304;
+	setAttr ".tgi[0].ni[39].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[39].y" 2195.71435546875;
+	setAttr ".tgi[0].ni[39].nvs" 18304;
+	setAttr ".tgi[0].ni[40].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[40].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[40].nvs" 18304;
+	setAttr ".tgi[0].ni[41].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[41].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[41].nvs" 18304;
+	setAttr ".tgi[0].ni[42].x" 257.14285278320312;
+	setAttr ".tgi[0].ni[42].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[42].nvs" 18304;
+	setAttr ".tgi[0].ni[43].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[43].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[43].nvs" 18304;
+	setAttr ".tgi[0].ni[44].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[44].y" 257.14285278320312;
+	setAttr ".tgi[0].ni[44].nvs" 18304;
+	setAttr ".tgi[0].ni[45].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[45].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[45].nvs" 18304;
+	setAttr ".tgi[0].ni[46].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[46].y" -132.85714721679688;
+	setAttr ".tgi[0].ni[46].nvs" 18304;
+	setAttr ".tgi[0].ni[47].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[47].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[47].nvs" 18304;
+	setAttr ".tgi[0].ni[48].x" 101.42857360839844;
+	setAttr ".tgi[0].ni[48].y" 1558.5714111328125;
+	setAttr ".tgi[0].ni[48].nvs" 18304;
+	setAttr ".tgi[0].ni[49].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[49].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[49].nvs" 18304;
+	setAttr ".tgi[0].ni[50].x" 101.42857360839844;
+	setAttr ".tgi[0].ni[50].y" -2211.428466796875;
+	setAttr ".tgi[0].ni[50].nvs" 18304;
+	setAttr ".tgi[0].ni[51].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[51].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[51].nvs" 18304;
+	setAttr ".tgi[0].ni[52].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[52].y" 257.14285278320312;
+	setAttr ".tgi[0].ni[52].nvs" 18304;
+	setAttr ".tgi[0].ni[53].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[53].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[53].nvs" 18304;
+	setAttr ".tgi[0].ni[54].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[54].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[54].nvs" 18304;
+	setAttr ".tgi[0].ni[55].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[55].y" -132.85714721679688;
+	setAttr ".tgi[0].ni[55].nvs" 18304;
+	setAttr ".tgi[0].ni[56].x" 101.42857360839844;
+	setAttr ".tgi[0].ni[56].y" 2468.571533203125;
+	setAttr ".tgi[0].ni[56].nvs" 18304;
+	setAttr ".tgi[0].ni[57].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[57].y" 1587.142822265625;
+	setAttr ".tgi[0].ni[57].nvs" 18304;
+	setAttr ".tgi[0].ni[58].x" -202.85714721679688;
+	setAttr ".tgi[0].ni[58].y" 2094.28564453125;
+	setAttr ".tgi[0].ni[58].nvs" 18304;
+	setAttr ".tgi[0].ni[59].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[59].y" 257.14285278320312;
+	setAttr ".tgi[0].ni[59].nvs" 18304;
+	setAttr ".tgi[0].ni[60].x" 387.14285278320312;
+	setAttr ".tgi[0].ni[60].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[60].nvs" 18304;
+	setAttr ".tgi[0].ni[61].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[61].y" 387.14285278320312;
+	setAttr ".tgi[0].ni[61].nvs" 18304;
+	setAttr ".tgi[0].ni[62].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[62].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[62].nvs" 18304;
+	setAttr ".tgi[0].ni[63].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[63].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[63].nvs" 18304;
+	setAttr ".tgi[0].ni[64].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[64].y" -132.85714721679688;
+	setAttr ".tgi[0].ni[64].nvs" 18304;
+	setAttr ".tgi[0].ni[65].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[65].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[65].nvs" 18304;
+	setAttr ".tgi[0].ni[66].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[66].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[66].nvs" 18304;
+	setAttr ".tgi[0].ni[67].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[67].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[67].nvs" 18304;
+	setAttr ".tgi[0].ni[68].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[68].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[68].nvs" 18304;
+	setAttr ".tgi[0].ni[69].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[69].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[69].nvs" 18304;
+	setAttr ".tgi[0].ni[70].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[70].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[70].nvs" 18304;
+	setAttr ".tgi[0].ni[71].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[71].y" -262.85714721679688;
+	setAttr ".tgi[0].ni[71].nvs" 18304;
+	setAttr ".tgi[0].ni[72].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[72].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[72].nvs" 18304;
+	setAttr ".tgi[0].ni[73].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[73].y" 257.14285278320312;
+	setAttr ".tgi[0].ni[73].nvs" 18304;
+	setAttr ".tgi[0].ni[74].x" 387.14285278320312;
+	setAttr ".tgi[0].ni[74].y" -2.8571429252624512;
+	setAttr ".tgi[0].ni[74].nvs" 18304;
+	setAttr ".tgi[0].ni[75].x" 102.85713958740234;
+	setAttr ".tgi[0].ni[75].y" 127.14286041259766;
+	setAttr ".tgi[0].ni[75].nvs" 18304;
 select -ne :time1;
 	setAttr ".o" 34;
 	setAttr ".unw" 34;
@@ -1370,6 +1822,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -1380,44 +1834,86 @@ connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drive
 		 -na;
 connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
 connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
-connectAttr "LThighShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn";
-connectAttr "LfootShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[1].dn";
+connectAttr "Lfoot.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn";
+connectAttr "LhandShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[1].dn";
 connectAttr "pelvisShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[2].dn";
-connectAttr "RThigh.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[3].dn";
-connectAttr "Rlowerleg.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[4].dn";
-connectAttr "Llowerleg.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[5].dn";
-connectAttr "RThighShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[6].dn";
-connectAttr "LThigh.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[7].dn";
-connectAttr "LHeelShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[8].dn";
-connectAttr "LHeel.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[9].dn";
-connectAttr "LlowerlegShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[10].dn";
-connectAttr "Lfoot.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[11].dn";
-connectAttr "pelvis.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[12].dn";
-connectAttr "RlowerlegShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[13].dn";
-connectAttr "LBicepShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[14].dn";
-connectAttr "mainTorso.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[15].dn";
-connectAttr "LforearmShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[16].dn";
-connectAttr "chestShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[17].dn";
-connectAttr "RBicepShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[18].dn";
+connectAttr "LThigh.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[3].dn";
+connectAttr "RBicep.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[4].dn";
+connectAttr "RForeArmShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[5].dn";
+connectAttr "RForeArm.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[6].dn";
+connectAttr "Lforearm.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[7].dn";
+connectAttr "RBicepShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[8].dn";
+connectAttr "neckShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[9].dn";
+connectAttr "Head.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[10].dn";
+connectAttr "RhandShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[11].dn";
+connectAttr "Llowerleg.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[12].dn";
+connectAttr "chestShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[13].dn";
+connectAttr "LfootShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[14].dn";
+connectAttr "LThighShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[15].dn";
+connectAttr "mainTorso.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[16].dn";
+connectAttr "mainTorsoShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[17].dn";
+connectAttr "chest.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[18].dn";
 connectAttr "neck.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[19].dn";
-connectAttr "RForeArmShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[20].dn";
-connectAttr "chest.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[21].dn";
-connectAttr "Rhand.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[22].dn";
-connectAttr "Lhand.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[23].dn";
-connectAttr "RForeArm.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[24].dn";
-connectAttr "HeadShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[25].dn";
-connectAttr "RHeel.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[26].dn";
-connectAttr "RhandShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[27].dn";
-connectAttr "LBicep.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[28].dn";
-connectAttr "Lforearm.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[29].dn";
-connectAttr "RBicep.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[30].dn";
-connectAttr "RfootShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[31].dn";
-connectAttr "LhandShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[32].dn";
-connectAttr "Rfoot.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[33].dn";
-connectAttr "neckShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[34].dn";
-connectAttr "RHeelShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[35].dn";
-connectAttr "Head.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[36].dn";
-connectAttr "mainTorsoShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[37].dn";
+connectAttr "HeadShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[20].dn";
+connectAttr "Lhand.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[21].dn";
+connectAttr "LHeel.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[22].dn";
+connectAttr "LlowerlegShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[23].dn";
+connectAttr "LBicepShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[24].dn";
+connectAttr "Rhand.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[25].dn";
+connectAttr "LBicep.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[26].dn";
+connectAttr "LforearmShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[27].dn";
+connectAttr "pelvis.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[28].dn";
+connectAttr "LHeelShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[29].dn";
+connectAttr "nurbsCircle1.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[30].dn";
+connectAttr "RHeelShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[31].dn";
+connectAttr "locatorShape7.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[32].dn";
+connectAttr "RThigh.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[33].dn";
+connectAttr "locator9.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[34].dn";
+connectAttr "locatorShape10.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[35].dn";
+connectAttr "uppergroup.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[36].dn";
+connectAttr "uppergroupShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[37].dn"
+		;
+connectAttr "lowergroup.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[38].dn";
+connectAttr "RfootShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[39].dn";
+connectAttr "locator3.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[40].dn";
+connectAttr "locatorShape3.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[41].dn";
+connectAttr "nurbsCircleShape1.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[42].dn"
+		;
+connectAttr "locatorShape4.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[43].dn";
+connectAttr "locatorShape5.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[44].dn";
+connectAttr "locator6.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[45].dn";
+connectAttr "locator5.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[46].dn";
+connectAttr "locatorShape6.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[47].dn";
+connectAttr "RHeel.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[48].dn";
+connectAttr "lowergroupShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[49].dn"
+		;
+connectAttr "Rlowerleg.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[50].dn";
+connectAttr "locator4.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[51].dn";
+connectAttr "locator7.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[52].dn";
+connectAttr "locator8.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[53].dn";
+connectAttr "locatorShape8.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[54].dn";
+connectAttr "locatorShape9.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[55].dn";
+connectAttr "Rfoot.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[56].dn";
+connectAttr "RlowerlegShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[57].dn";
+connectAttr "RThighShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[58].dn";
+connectAttr "locator10.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[59].dn";
+connectAttr "neckheadgroupShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[60].dn"
+		;
+connectAttr "locatorShape17.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[61].dn";
+connectAttr "locator15.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[62].dn";
+connectAttr "locatorShape14.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[63].dn";
+connectAttr "Larmgroup.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[64].dn";
+connectAttr "locator17.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[65].dn";
+connectAttr "RarmgroupShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[66].dn";
+connectAttr "locator18.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[67].dn";
+connectAttr "Rarmgroup.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[68].dn";
+connectAttr "locatorShape15.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[69].dn";
+connectAttr "locator14.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[70].dn";
+connectAttr "LarmgroupShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[71].dn";
+connectAttr "locator12.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[72].dn";
+connectAttr "locatorShape18.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[73].dn";
+connectAttr "neckheadgroup.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[74].dn";
+connectAttr "locatorShape12.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[75].dn";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "RThighShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "RlowerlegShape.iog" ":initialShadingGroup.dsm" -na;
