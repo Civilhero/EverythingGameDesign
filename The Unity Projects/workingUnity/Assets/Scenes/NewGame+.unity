@@ -414,8 +414,8 @@ Transform:
   m_GameObject: {fileID: 1042667537}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58897, y: -6.84, z: -16.13}
-  m_LocalScale: {x: 4.3588, y: 4.3588, z: 4.3588}
+  m_LocalPosition: {x: 0.69, y: -6.84, z: -16.13}
+  m_LocalScale: {x: 1.4814416, y: 4.3588, z: 4.3588}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -434,9 +434,10 @@ GameObject:
   - component: {fileID: 1359678333}
   - component: {fileID: 1359678332}
   - component: {fileID: 1359678331}
+  - component: {fileID: 1359678337}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -453,8 +454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8cbbe35153640cea23bf58a428eab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleCharacterController
-  moveSpeed: 5
-  jumpForce: 4
+  controller: {fileID: 1359678332}
+  moveSpeed: 10
+  jumpHeight: 5
   gravity: -9.81
 --- !u!143 &1359678332
 CharacterController:
@@ -496,7 +498,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -569,13 +571,36 @@ Transform:
   m_GameObject: {fileID: 1359678330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -4.4, z: -23.69}
+  m_LocalPosition: {x: 0.45, y: -4.4, z: -12.88}
   m_LocalScale: {x: 2.0607, y: 2.0607, z: 2.0607}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 761292727}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359678337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359678330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8af9fb403cd05d4c87bc73fb2f24a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClimbingScript
+  controller: {fileID: 0}
+  maxStamina: 20
+  staminaDrainRate: 2
+  climbHeightPerClick: 2
+  wallSnapSpeed: 20
+  climbDriftGravity: 10
+  enterDistance: 3
+  topExitBuffer: 5
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1748519673
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +615,7 @@ GameObject:
   - component: {fileID: 1748519674}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,8 +639,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.96, y: 1.44, z: 0.79}
+  m_Center: {x: 0, y: 0, z: -1.01}
 --- !u!23 &1748519675
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -681,7 +706,7 @@ Transform:
   m_GameObject: {fileID: 1748519673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 14.9, z: 3.4}
+  m_LocalPosition: {x: 0.7, y: 13.7, z: 3.4}
   m_LocalScale: {x: 16.050205, y: 43.36284, z: 3.201695}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -793,7 +818,7 @@ Transform:
   m_GameObject: {fileID: 1935385838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58897, y: 36.5, z: 25.3}
+  m_LocalPosition: {x: -1.58897, y: 35.35, z: 24.34}
   m_LocalScale: {x: 4.3588, y: 4.3588, z: 4.3588}
   m_ConstrainProportionsScale: 0
   m_Children: []
