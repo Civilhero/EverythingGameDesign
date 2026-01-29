@@ -1,61 +1,81 @@
 using UnityEngine;
 
+/// <summary>
+/// The SimpleCharacterController class controls basic movement of a 2D platformer character.
+/// This includes horizontal movement and jumping, adding gravity, and maintaining character position on the x-axis.
+/// </summary>
+[Tooltip("Controls basic movement of a 2D platformer character.")]
+[RequireComponent(typeof(CharacterController))]
 public class SimpleCharacterController : MonoBehaviour
 {
-    public CharacterController controller;
+    [Tooltip("The speed at which the character moves horizontally.")]
     public float moveSpeed = 5f;
-    public float jumpHeight = 2f;
-    public float gravity = -19.62f;
 
+    [Tooltip("The upward force applied when the character jumps.")]
+    public float jumpForce = 4f;
+
+    [Tooltip("The constant downward force applied by gravity.")]
+    public float gravity = -9.81f;
+
+    private CharacterController controller;
     private Vector3 velocity;
+    private Transform thisTransform;
+    //add a roll to the character controller
+   
+    
 
-    void Awake()
+    /// <summary>
+    /// Initialize required components.
+    /// </summary>
+    private void Start()
     {
-        if (controller == null)
-            controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        thisTransform = transform;
     }
 
-    void Update()
+    /// <summary>
+    /// Controls character movement and position every frame.
+    /// </summary>
+    private void Update()
     {
-        if (controller == null) return;
         MoveCharacter();
+        ApplyGravity();
     }
 
+    /// <summary>
+    /// Handles horizontal movement and jumping.
+    /// </summary>
     private void MoveCharacter()
     {
-        bool isGrounded = controller.isGrounded;
-        if (isGrounded && velocity.y < 0)
+        // Handle horizontal movement
+        var moveInput = Input.GetAxis("Horizontal");
+        var move = new Vector3(moveInput, 0f, 0f) * (moveSpeed * Time.deltaTime);
+        controller.Move(move);
+
+        // Handle jumping
+        if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = -2f;
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
+    }
+
+    /// <summary>
+    /// Defines the character's behavior under gravity.
+    /// </summary>
+    private void ApplyGravity()
+    {
+        // Apply gravity when off the ground
+        if (!controller.isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            // Reset vertical velocity when on the ground
+            velocity.y = 0f;
         }
 
-        // ── WASD only input ───────────────────────────────────
-        float horizontal = 0f;
-        float vertical   = 0f;
-
-        if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
-        if (Input.GetKey(KeyCode.D)) horizontal += 1f;
-        if (Input.GetKey(KeyCode.W)) vertical   += 1f;
-        if (Input.GetKey(KeyCode.S)) vertical   -= 1f;
-
-        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
-
-        // Normalize diagonal movement (prevents √2 speed boost)
-        if (moveDirection.sqrMagnitude > 1f)
-            moveDirection.Normalize();
-
-        Vector3 moveDelta = transform.TransformDirection(moveDirection) * (moveSpeed * Time.deltaTime);
-
-        controller.Move(moveDelta);
-
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
-        }
-
-        // Gravity
-        velocity.y += gravity * Time.deltaTime;
+        // Apply velocity
         controller.Move(velocity * Time.deltaTime);
     }
 }
