@@ -28,7 +28,11 @@ public class ClimbingScript : MonoBehaviour
         if (controller == null) return;
 
         // Enter climbing (K key)
+<<<<<<< HEAD
         if (!isClimbing && Input.GetKeyDown(KeyCode.K))
+=======
+        if (!isClimbing && Input.GetMouseButton(0))
+>>>>>>> parent of afc6faf (Please work!)
         {
             TryEnterClimb();
         }
@@ -80,7 +84,11 @@ public class ClimbingScript : MonoBehaviour
     private void HandleClimbing()
     {
         // J key to exit
+<<<<<<< HEAD
         if (Input.GetKeyDown(KeyCode.J))
+=======
+        if (Input.GetKeyDown(KeyCode.Space))
+>>>>>>> parent of afc6faf (Please work!)
         {
             ExitClimb();
             return;
