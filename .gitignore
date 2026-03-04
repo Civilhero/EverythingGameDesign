@@ -105,3 +105,16 @@ The Unity Projects/workingUnity/Assets/HoudiniEngineUnity/
 The Unity Projects/workingUnity/Assets/HoudiniEngineUnity.meta
 
 The Unity Projects/workingUnity/.idea/
+
+The Unity Projects/workingUnity/Assets/HoudiniEngineAssetCache/
+
+
+The Unity Projects/workingUnity/UserSettings/
+
+The Unity Projects/workingUnity/ProjectSettings/
+
+*.ini
+
+The Unity Projects/workingUnity/Packages/
+
+*.xml
