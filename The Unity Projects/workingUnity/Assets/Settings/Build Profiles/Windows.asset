@@ -23,6 +23,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/CanyonClimberHiker/HomeScreene.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/CanyonClimberHiker/Level selection.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/CanyonClimberHiker/NewGame+.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
